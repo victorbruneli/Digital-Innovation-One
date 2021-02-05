@@ -1,0 +1,47 @@
+import React, {useEffect, useState} from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { setConstantValue } from 'typescript';
+
+
+function App(props:any) {
+  const {loading} = props
+  const [tweet, setTweet] = useState('title')
+
+  // componentDidMount
+  useEffect(()=>{
+    const {posts, loading } = props
+    console.log('ComponentDidMount', props)
+    console.log('componentDidMount: loading', loading)
+  },[])
+
+  // componentDidUpdate
+  useEffect(()=>{
+    console.log('componentDidUpdate', loading)    
+  }, [loading])
+
+  // componentWillUnmount
+  useEffect(()=>{
+    return () => {
+      console.log('componentWillUnmount: fui removido.')
+    }
+  }, [])
+
+  const handleTweet = () => {
+    setTweet('Tweet atualizado')
+  }
+
+
+console.log('Tweet atualizado', tweet)
+
+
+  return (
+    <div>
+    <button onClick={handleTweet}>Re-render</button>
+    tests
+
+    </div>
+  );
+}
+
+export default App;
